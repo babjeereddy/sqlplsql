@@ -1,0 +1,46 @@
+create table Designation_Masters(
+	Design_code number(10),
+	Design_name varchar2(20));
+
+
+create table Department_Masters(
+	Dept_Code  number(10),
+	Dept_name varchar2(30));
+
+create table Student_Masters(
+	Student_Code  Number(6) ,
+	Student_name  Varchar2(50) ,
+	Dept_Code Number(2) ,
+	Student_dob Date ,
+	Student_Address Varchar2(240));
+create table student_marks
+	(Student_Code Number(6),
+	 Student_Year  Number,
+	 Subject1 Number(3) ,
+	Subject2 Number(3) ,
+	Subject3 Number(3));
+
+create table Staff_Masters(
+	Staff_code Number(8),
+	Staff_Name  Varchar2(50),
+	 Design_code Number,
+	Dept_code Number,
+	 HireDate Date,
+	Staff_dob Date,
+	 Staff_address Varchar2(240),
+	 Mgr_code Number(8),
+	 Staff_sal Number (10,2));
+
+create table book_masters(
+Book_Code  Number(10),
+Book_Name  Varchar2(50),
+Book_pub_year Number,
+Book_pub_author  Varchar2(50));
+
+create table book_transactions(
+Book_Code Number,
+Student_code Number,
+Staff_code Number ,
+Book_Issue_date  Date,
+Book_expected_return_date  Date,
+ Book_actual_return_date Date);
