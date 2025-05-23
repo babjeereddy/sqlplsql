@@ -1,0 +1,52 @@
+drop table product;
+drop table product_price_history;
+CREATE TABLE product_price_history 
+	(product_id number(5), 
+	product_name varchar2(32), 
+	supplier_name varchar2(32), 
+	unit_price number(7,2) ); 
+    
+
+  CREATE TABLE product 
+	(product_id number(5), 
+	product_name varchar2(32), 
+	supplier_name varchar2(32), 
+	unit_price number(7,2) );
+
+CREATE TABLE product_check
+(Message varchar2(50), 
+ Current_Date  date );
+
+
+Insert into product values(100,’pen’,’babjee’,300);
+Insert into product values(101,’Pencil’,’Naveen’,400);
+
+
+create or replace trigger price_history_trigger
+    before update or delete
+    on product
+    for each row
+begin
+    insert into product_price_history values(
+        :old.product_id,
+        :old.product_name,
+        :old.supplier_name,
+        :old.unit_price);
+end;
+-------------------------------------------------------------------------------------------------------
+create or replace trigger price_history_trigger1
+    after insert
+    on product
+    for each row
+begin
+    insert into product_price_history values(
+        :new.product_id,
+        :new.product_name,
+        :new.supplier_name,
+        :new.unit_price);
+end;
+
+------------------------------------------------------------------------------------------------------------
+
+
+ 

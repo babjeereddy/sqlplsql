@@ -1,0 +1,9 @@
+create or replace procedure sp_emp(p_deptno number)
+is
+ cursor c1(p1 number) is select empno,ename,sal,deptno from emp where deptno =p1;
+begin
+    for emp_rec in c1(p_deptno)
+     loop
+       dbms_output.put_line(emp_rec.empno||' '||emp_rec.ename||' '||emp_rec.sal||' '||emp_rec.deptno);
+     end loop;
+end;
