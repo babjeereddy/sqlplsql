@@ -1,0 +1,29 @@
+ps	Show current user's processes
+ps -ef	Show all processes in full-format
+ps aux	Show all processes with resource usage
+top	Real-time process monitor
+
+
+cat > <file>	Create file and type content (Ctrl+D to save)
+echo "text" > <file>	Write text to a file (overwrites)
+echo "text" >> <file>	Append text to a file
+cp <source> <dest>	Copy a file
+mv <source> <dest>	Move or rename a file
+rm <file>	Remove a file
+rm -f <file>	Force delete a file
+
+cat <file>	Display contents of a file
+less <file>	Page through file (up/down)
+more <file>	Similar to less, older
+head <file>	Show first 10 lines
+tail <file>	Show last 10 lines
+tail -f <file>	Continuously display new lines (log monitoring)
+nl <file>	Show file with line numbers
+
+chmod +x <file>	Make a file executable
+chown user:group <file>	Change file owner and group
+stat <file>	Show detailed info about a file
+file <file>	Identify file type
+
+sort -t',' -k3 -n data.csv
+sort -f  data.csv

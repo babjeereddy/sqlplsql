@@ -1,0 +1,207 @@
+#!/bin/bash
+echo "Enter your age"
+read age
+
+if [ $age -ge 18 ]
+then
+  echo "you are eligible for vote"
+else
+  echo "try other time"
+fi
+-------------------------------------------------------------
+#!/bin/bash
+
+str1="hello"
+str2="hello"
+
+if [ $str1 = $str2 ]; then
+  echo "Strings are equal"
+else
+  echo "Strings are not equal"
+fi
+--------------------------------------------------------
+if [ "$(whoami)" = "babje" ]
+then
+  echo "hi $(whoami)."
+else
+  echo "Who are you."
+fi
+
+
+#!/bin/bash
+if [ $# -lt 2 ]
+then
+  echo "Script Need 2 arguments"
+else
+   echo `expr $1 + $2`
+   echo `expr $1 \* $2`
+fi
+
+
+
+#!/bin/bash
+if [ -d $1 ]
+then
+  ls -l $1
+else
+  cat $1
+fi
+
+
+#!/bin/bash
+echo "Enter your number"
+read num
+if [ $num -ge 50000 ]
+then
+  echo "excelent"
+elif [ $num -ge 40000 ]
+then
+  echo "good"
+elif [ $num -ge 30000 ]
+
+then
+  echo "average"
+else
+  echo "poor"
+fi
+-----------------------------------------------------------
+#!/bin/bash
+
+read -p "Enter a number: " num
+
+if [ $num -gt 0 ]; then
+  echo "Number is positive"
+
+  if [ $((num % 2)) -eq 0 ]; then
+    echo "It is even"
+  else
+    echo "It is odd"
+  fi
+
+else
+  echo "Number is zero or negative"
+fi
+-----------------------------------------------------------------
+
+
+echo "Enter the name of a month."
+read month
+case $month in
+  February)
+echo "There are 28/29 days in $month.";;
+  April | June | September | November)
+echo "There are 30 days in $month.";;
+  January | March | May | July | August | October | December)
+echo "There are 31 days in $month.";;
+  *)
+echo "Unknown month. Please check if you entered the correct month name: $month";;
+esac
+
+
+for i in $(seq 1 10)
+do
+  echo $i
+done
+
+
+for ((i=5;i>0;i--))
+ do
+   echo $i
+ done
+
+
+ for ((i=1; i<=0; i++))
+do
+  echo $i
+done
+
+for i in $*
+do
+  echo $i
+done
+
+
+
+for i in $(seq 1 10)
+do
+  if [ $i -eq 5 ]
+   then
+    break
+  fi
+    echo $i
+done
+
+for i in $(seq 1 10)
+do
+   if [ $i -eq 5 ] || [ $i -eq 6 ]
+     then
+        continue
+   fi
+
+   echo $i
+done
+
+-------------------------------------------------------------
+#!/bin/bash
+
+for i in $(seq 1 2)
+do
+  for j in $(seq 1 3)
+  do
+    echo "i=$i, j=$j"
+  done
+done
+--------------------------------------------------
+count=1
+while [ $count -le 5 ]
+do
+  echo "Count is: $count"
+  count=`expr $count  +  1`
+done
+
+#!/bin/bash
+
+for i in $(seq 1 10)
+do
+ if [  `expr $i % 2` -eq 0 ]
+then
+  echo $i even
+else
+  echo $i odd
+fi
+done 
+
+
+for file in *.txt; do
+  mv "$file" "${file%.txt}.bak"
+done
+
+DIR="test"
+TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+cp -r "$DIR" "${DIR}_backup_$TIMESTAMP"
+
+
+
+read -p "Enter a string: " str
+revstr=$(echo "$str" | rev)
+if [[ "$str" == "$revstr" ]]; then
+  echo "Palindrome"
+else
+  echo "Not a palindrome"
+fi
+
+
+sum=0
+while read -r line
+do
+  ((sum += line))
+done < numbers
+echo "Sum: $sum"
+
+
+read -p "Enter a number: " n
+fact=1
+for ((i=1; i<=n; i++)); do
+  fact=$((fact * i))
+done
+echo "Factorial: $fact"

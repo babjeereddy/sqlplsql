@@ -1,0 +1,309 @@
+#!/bin/bash
+echo "Enter your age"
+read age
+
+if [ $age -ge 18 ]
+then
+  echo "you are eligible for vote"
+else
+  echo "try other time"
+fi
+-------------------------------------------------------------
+#!/bin/bash
+
+str1="hello"
+str2="hello"
+
+if [ $str1 = $str2 ]; then
+  echo "Strings are equal"
+else
+  echo "Strings are not equal"
+fi
+--------------------------------------------------------
+if [ $(whoami) = "babje" ]
+then
+  echo "hi $(whoami)."
+else
+  echo "Who are you."
+fi
+
+
+#!/bin/bash
+if [ $# -lt 2 ]
+then
+  echo "Script Need 2 arguments"
+else
+   echo `expr $1 + $2`
+   echo `expr $1 \* $2`
+fi
+
+
+
+#!/bin/bash
+if [ -d $1 ]
+then
+  ls -l $1
+else
+  cat $1
+fi
+
+
+#!/bin/bash
+echo "Enter your number"
+read num
+if [ $num -ge 50000 ]
+then
+  echo "excelent"
+elif [ $num -ge 40000 ]
+then
+  echo "good"
+elif [ $num -ge 30000 ]
+
+then
+  echo "average"
+else
+  echo "poor"
+fi
+-----------------------------------------------------------
+#!/bin/bash
+
+read -p "Enter a number: " num
+
+if [ $num -gt 0 ]; then
+  echo "Number is positive"
+
+  if [ $((num % 2)) -eq 0 ]; then
+    echo "It is even"
+  else
+    echo "It is odd"
+  fi
+
+else
+  echo "Number is zero or negative"
+fi
+-----------------------------------------------------------------
+read -p "Enter choice [1-3]: " choice
+
+case $choice in
+  1)
+    echo "Hello!"
+    ;;
+  2)
+    date
+    ;;
+  3)
+    echo "Goodbye!"
+    exit 0
+    ;;
+  *)
+    echo "Invalid option."
+    ;;
+esac
+-------------------------------------------------------------------------------------
+
+echo "Enter the name of a month."
+read month
+case $month in
+  February)
+echo "There are 28/29 days in $month.";;
+  April | June | September | November)
+echo "There are 30 days in $month.";;
+  January | March | May | July | August | October | December)
+echo "There are 31 days in $month.";;
+  *)
+echo "Unknown month. Please check if you entered the correct month name: $month";;
+esac
+
+---------------------------------------------------------------------------------
+#!/bin/bash
+
+echo "Choose an option:"
+echo "1) Say Hello"
+echo "2) Show Date"
+echo "3) Exit"
+
+read -p "Enter choice [1-3]: " choice
+
+case $choice in
+  1)
+    echo "Hello!"
+    ;;
+  2)
+    date
+    ;;
+  3)
+    echo "Goodbye!"
+    exit 0
+    ;;
+  *)
+    echo "Invalid option."
+    ;;
+esac
+
+#!/bin/bash
+read -p "Enter num1 value" num1
+read -p "Enter num2 value" num2
+echo "1) Addition"
+echo "2) Subtraction"
+echo "3) Multipication"
+echo "4) Division"
+read -p "Enter your choice" choice
+case $choice in
+      1)
+        result=$(( $num1 + $num2))  ;;
+      2)
+        result=$(( $num1 - $num2))  ;;
+      3)
+        result=$(( $num1 * $num2)) ;;
+      4)
+      result=$(( $num1 /  $num2)) ;;
+     *)
+      result="Invalid choice" ;;
+esac
+echo $result
+
+
+
+
+
+for i in $(seq 1 10)
+do
+  echo $i
+done
+
+
+for ((i=5;i>0;i--))
+ do
+   echo $i
+ done
+
+
+ for ((i=1; i<=0; i++))
+do
+  echo $i
+done
+
+for i in $*
+do
+  echo $i
+done
+
+#!/bin/bash
+for ((i=1; i <5; i++))
+do
+  echo "outer Loop value $i"
+	for ((j=1; j <3; j++))
+	   do
+  	     echo "	   Inner Loop value $j"
+                     done
+done
+
+for i in $(seq 1 10)
+do
+  if [ $i -eq 5 ]
+   then
+    break
+  fi
+    echo $i
+done
+
+for i in $(seq 1 10)
+do
+   if [ $i -eq 5 ] || [ $i -eq 6 ]
+     then
+        continue
+   fi
+
+   echo $i
+done
+
+-------------------------------------------------------------
+#!/bin/bash
+
+for i in $(seq 1 2)
+do
+echo "outer loop $i"
+  for j in $(seq 1 3)
+  do
+    echo " 	   inner loop $j"
+  done
+done
+--------------------------------------------------
+count=1
+while [ $count -le 5 ]
+do
+  echo "Count is: $count"
+  count=`expr $count  +  1`
+done
+
+#!/bin/bash
+  echo "1. Show Date and Time"
+  echo "2. Show Current Directory"
+  echo "3. Show Logged In Users"
+  echo "4. List Files"
+  echo "5. Exit"
+  read -p "Enter your choice [1-5]: " choice
+  case $choice in
+    1)
+      echo "Current Date and Time: $(date)"       ;;
+    2)
+      echo "Current Directory: $(pwd)"  ;;
+    3)
+      echo "Logged In Users:"
+      who  ;;
+    4)
+      echo "Files in Current Directory:"
+      ls -l ;;
+    5)
+      echo "Exiting program. Goodbye!"
+      break  ;;
+    *)
+      echo "Invalid choice. Please select between 1 to 5." ;;
+  esac
+------------------------------------------------------------------------------------------
+
+#!/bin/bash
+
+while true
+do
+  echo "========== MENU =========="
+  echo "1. Show Date and Time"
+  echo "2. Show Current Directory"
+  echo "3. Show Logged In Users"
+  echo "4. List Files"
+  echo "5. Exit"
+  echo "=========================="
+  read -p "Enter your choice [1-5]: " choice
+
+  case $choice in
+    1)
+      echo "Current Date and Time: $(date)"
+      ;;
+    2)
+      echo "Current Directory: $(pwd)"
+      ;;
+    3)
+      echo "Logged In Users:"
+      who
+      ;;
+    4)
+      echo "Files in Current Directory:"
+      ls -l
+      ;;
+    5)
+      echo "Exiting program. Goodbye!"
+      break
+      ;;
+    *)
+      echo "Invalid choice. Please select between 1 to 5."
+      ;;
+  esac
+
+  echo
+  read -p "Press Enter to continue..."
+  clear
+done
+
+
+
+
